@@ -1,5 +1,8 @@
 import java.math.BigInteger
-
+//inheritance
+open class Entity{
+    var isAlive = true
+}
 class Person(
     val id: String,
     val fName: String,
@@ -7,7 +10,7 @@ class Person(
     val designation: String,
     var annualIncome: Double,
     val gender: String,
-) {
+) : Entity() {
     fun dsp() {
         //templating
         print("my name is $fName $lName")
