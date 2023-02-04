@@ -1,7 +1,7 @@
 import java.math.BigInteger
 //inheritance
-open class Entity{
-    var isAlive = true
+open class Entity(var isAlive:Boolean){
+    open fun checkAliveOrDead() = if(isAlive) "Entity is alive" else "Entity is dead"
 }
 class Person(
     val id: String,
@@ -9,11 +9,12 @@ class Person(
     val lName: String,
     val designation: String,
     var annualIncome: Double,
-    val gender: String,
-) : Entity() {
+    val gender: String, isAlive: Boolean,
+) : Entity(isAlive) {
+
     fun dsp() {
         //templating
-        print("my name is $fName $lName")
+        println("my name is $fName $lName")
         println("Monthly income ${annualIncome / 12}")
 
         //range
@@ -52,7 +53,7 @@ class Person(
 
         //naming loops
         outer@ for (i in 1..3) {
-            println("${i}")
+            println(i)
             inner@ for (j in 10..13) {
                 if (i % 2 == 0) continue@outer
                 print("\t${j}")
@@ -73,6 +74,8 @@ class Person(
 
         //tailrec
         //fibo(10000)
+
+
     }
 
     fun getSalary():Double = annualIncome/12
@@ -82,6 +85,12 @@ class Person(
 
     //default parameters
     fun radius(radius: Double, PI: Double = 3.14159265359): Double = PI * (radius * radius)
+
+    //method overriding
+    override fun checkAliveOrDead():String{
+        println(super<Entity>.checkAliveOrDead())
+        if(isAlive) return "Person is alive" else return "Person is dead"
+    }
 }
 //extension function
 fun Person.haveCar():Boolean = getSalary()>50000

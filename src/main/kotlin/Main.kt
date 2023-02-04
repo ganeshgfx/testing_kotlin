@@ -6,9 +6,11 @@ fun main() {
         "Ghutiya",
         "student",
         12000.0,
-        "male"
+        "male",
+        isAlive = false
     )
     //println("Have Car : ${obj.haveCar()}")
     obj.dsp()
+    println(obj.checkAliveOrDead())
 
 }
