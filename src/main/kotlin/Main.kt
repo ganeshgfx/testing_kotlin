@@ -12,5 +12,12 @@ fun main() {
     //println("Have Car : ${obj.haveCar()}")
     obj.dsp()
     println(obj.checkAliveOrDead())
+    obj.move()
+
+    //data
+    val v = Data("Value",1)
+    val w = v.copy(id=2)
+
+    println("$v - $w")
 
 }

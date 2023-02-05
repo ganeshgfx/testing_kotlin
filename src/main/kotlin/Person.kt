@@ -1,7 +1,36 @@
 import java.math.BigInteger
+//interface
+interface Sole{
+    fun think()
+    fun sense(){
+        println("Sensing...")
+    }
+}
+class Human() :Sole{
+    override fun think() {
+        println("Thinking...")
+    }
+
+    override fun sense() {
+        println("Human Sensing...")
+    }
+
+}
+//abstract
+abstract class Movement{
+    abstract var x:Int
+    abstract fun move()
+}
 //inheritance
-open class Entity(var isAlive:Boolean){
+open class Entity(var isAlive:Boolean) : Movement(){
     open fun checkAliveOrDead() = if(isAlive) "Entity is alive" else "Entity is dead"
+
+    //abstraction
+    override var x: Int = 0
+    override fun move() {
+        x++
+        println("Moving... x = $x")
+    }
 }
 class Person(
     val id: String,
