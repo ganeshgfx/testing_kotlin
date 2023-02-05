@@ -22,6 +22,11 @@ fun main() {
 
     //companion
     println("companion -> ${MyClass.count()}")
+
+    //Enum
+    println("${Id.Cat} | ${Id.Cat.ordinal} | ${Id.Cat.declaringClass}")
+    Id.values().forEach { println(it) }
+    Thing.values().forEach { println("$it -> ${it.value}") }
 }
 
 //companion
