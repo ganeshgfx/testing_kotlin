@@ -20,4 +20,14 @@ fun main() {
 
     println("$v - $w")
 
+    //companion
+    println("companion -> ${MyClass.count()}")
+}
+
+//companion
+class MyClass{
+    companion object{
+        var num:Int = 0
+        fun count() = num++
+    }
 }
