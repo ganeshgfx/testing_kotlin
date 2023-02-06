@@ -23,3 +23,10 @@ sealed class Shape{
     class Rectangle(var height:Float, var width:Float):Shape()
     object NotAShape:Shape()
 }
+class User{
+    var name = ""
+    var age = -1
+    fun getName(){
+        println(name)
+    }
+}

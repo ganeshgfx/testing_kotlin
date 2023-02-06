@@ -57,6 +57,19 @@ fun main() {
     //it(only for one parameter)
     reverse("Hello",{it.reversed()})
 
+    //with
+    var user1 = User()
+    with(user1){
+        name = "Erik"
+        age = 20
+    }
+    //apply
+    var user2 = User()
+   user2.apply{
+        name = "John"
+        age = 21
+    }.getName()
+
 }
 fun checkShape(shape:Shape) =
     when(shape){
