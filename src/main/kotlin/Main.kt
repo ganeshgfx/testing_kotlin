@@ -54,6 +54,9 @@ fun main() {
             i -> println(i)
     }
     lmd.add2Num(100,200) { x, y -> x + y }
+    //it(only for one parameter)
+    reverse("Hello",{it.reversed()})
+
 }
 fun checkShape(shape:Shape) =
     when(shape){
@@ -92,8 +95,11 @@ class Program {
         val result = action(a,b)
         println(result)
     }
-
 }
 interface LambdaInterface{
     fun execute(sum:Int)
+}
+fun reverse(str:String,func:(String)->String){
+    var result = func(str)
+    println(result)
 }
