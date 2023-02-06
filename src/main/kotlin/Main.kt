@@ -36,6 +36,24 @@ fun main() {
 
     println("Shape is type of ${checkShape(Shape.NotAShape)}")
 
+    //Lambda
+    var lmd = Program()
+    lmd.add2Num(2,5)
+    lmd.add2Num(2,9,object:LambdaInterface{
+        override fun execute(sum: Int) {
+            println(sum)
+        }
+    })
+    //high level function
+    val ml:(Int)->Unit = {i-> println(i) }
+    lmd.add2Num(10,6,ml)
+    lmd.add2Num(60,6,{
+            i-> println(i)
+    })
+    lmd.add2Num(60,56) {
+            i -> println(i)
+    }
+    lmd.add2Num(100,200) { x, y -> x + y }
 }
 fun checkShape(shape:Shape) =
     when(shape){
@@ -51,4 +69,31 @@ class MyClass{
         var num:Int = 0
         fun count() = num++
     }
+}
+
+//Lambda
+class Program {
+    //simple
+    fun add2Num(a:Int,b:Int){
+        val sum = a+b
+        println(sum)
+    }
+    //interface
+    fun add2Num(a:Int,b:Int,action:LambdaInterface){
+        val sum = a+b
+        action.execute(sum)
+    }
+    //lambda
+    fun add2Num(a:Int,b:Int,action:(Int)->Unit){
+        val sum = a+b
+        action(sum)
+    }
+    fun add2Num(a:Int,b:Int,action:(Int,Int)->Int){
+        val result = action(a,b)
+        println(result)
+    }
+
+}
+interface LambdaInterface{
+    fun execute(sum:Int)
 }
