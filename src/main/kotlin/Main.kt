@@ -9,6 +9,7 @@ fun main() {
         "male",
         isAlive = false
     )
+
     //println("Have Car : ${obj.haveCar()}")
     obj.dsp()
     println(obj.checkAliveOrDead())
@@ -27,8 +28,23 @@ fun main() {
     println("${Id.Cat} | ${Id.Cat.ordinal} | ${Id.Cat.declaringClass}")
     Id.values().forEach { println(it) }
     Thing.values().forEach { println("$it -> ${it.value}") }
-}
 
+    //Sealed
+    var circle = Shape.Circle(1.6f)
+    var square = Shape.Square(10f)
+    var rectangle = Shape.Rectangle(5f,10f)
+
+    println("Shape is type of ${checkShape(Shape.NotAShape)}")
+
+}
+fun checkShape(shape:Shape) =
+    when(shape){
+        is Shape.Circle -> "Circle"
+        is Shape.Square -> "Square"
+        is Shape.Rectangle -> "Square"
+        Shape.NotAShape -> "Not a Shape"
+        else -> "Invalid Shape"
+    }
 //companion
 class MyClass{
     companion object{
