@@ -122,22 +122,38 @@ fun main() {
 
     println()
     //filter
-    var nums  = listOf(1,2,6,7,8,3,0,1)
+    var nums = listOf(1, 2, 6, 7, 8, 3, 0, 1)
     println(nums)
-    val sNums = nums.filter { v->v<5 }
+    val sNums = nums.filter { v -> v < 5 }
     println(sNums)
 
     //mapping
-    var numberList  = listOf(1,2,6,7,8,3,1,10,20,30,40)
+    var numberList = listOf(1, 2, 6, 7, 8, 3, 1, 10, 20, 30, 40)
     println(nums)
-    var nMe = numberList.map { v->v+1 }
+    var nMe = numberList.map { v -> v + 1 }
     println(nMe)
 
-    val datas = listOf<Data>(Data("Ganesh",1),Data("Mayur",2),Data("Mohit",3),Data("Mayank",4),)
+    val datas = listOf<Data>(Data("Ganesh", 1), Data("Mayur", 2), Data("Mohit", 3), Data("Mayank", 4))
 
     println(datas.filter { it.name.startsWith("M") }.map { it.name })
+
     //filter + mapping
-    println(numberList.filter { it<10 }.map { it * 100 })
+    println(numberList.filter { it < 10 }.map { it * 100 })
+
+    println()
+    //predicates
+    val predicateCondition = {v:Int -> v > 10}
+    //all
+    println(numberList.all(predicateCondition))
+    //any
+    println(numberList.any(predicateCondition))
+    //count
+    println(numberList.count(predicateCondition))
+    //find
+    println(numberList.find (predicateCondition))
+    //forEach
+    //numberList.forEach { println(it) }
+
 
 }
 
