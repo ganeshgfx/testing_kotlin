@@ -120,11 +120,24 @@ fun main() {
     hSet.add(10)
     println(hSet)
 
+    println()
     //filter
     var nums  = listOf(1,2,6,7,8,3,0,1)
     println(nums)
     val sNums = nums.filter { v->v<5 }
     println(sNums)
+
+    //mapping
+    var numberList  = listOf(1,2,6,7,8,3,1,10,20,30,40)
+    println(nums)
+    var nMe = numberList.map { v->v+1 }
+    println(nMe)
+
+    val datas = listOf<Data>(Data("Ganesh",1),Data("Mayur",2),Data("Mohit",3),Data("Mayank",4),)
+
+    println(datas.filter { it.name.startsWith("M") }.map { it.name })
+    //filter + mapping
+    println(numberList.filter { it<10 }.map { it * 100 })
 
 }
 
