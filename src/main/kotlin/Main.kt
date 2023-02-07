@@ -154,7 +154,52 @@ fun main() {
     //forEach
     //numberList.forEach { println(it) }
 
+    println()
+    //NULL Safety
+    var nStr:String? = null
+    //safe call
+    println(nStr?.length)
 
+    //safe with let
+    nStr?.let {
+        if (nStr != null) {
+            println(nStr!!.length)
+        }
+    }
+    //Elvis-operator
+    var l = if(nStr!=null) nStr.length else -1
+    l = nStr?.length ?:-1
+    println(l)
+    //Not Null assertion operator
+    nStr = ""
+    println(nStr!!.length)
+    //Late-init
+    lateinit var sName:String
+    sName = "10"
+    println(sName)
+    //lazy initialization
+    println(PI)
+
+}
+//lazy initialization
+val PI:Float by lazy { 3.14f }
+
+//Backing Property
+class Children{
+    private var _age:Int = 1
+    var age = 24
+        get(){
+            println(field)
+            return _age
+        }
+        set(value){
+            _age = value
+        }
+
+    private val _hobbies = mutableListOf<String>()
+    public val hobbies:List<String>
+        get() = hobbies
+    fun addHobbies(hobby_new:String){ _hobbies.add(hobby_new)}
 }
 
 fun checkShape(shape: Shape) =
@@ -165,7 +210,6 @@ fun checkShape(shape: Shape) =
         Shape.NotAShape -> "Not a Shape"
         else -> "Invalid Shape"
     }
-
 //companion
 class MyClass {
     companion object {
