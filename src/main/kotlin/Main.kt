@@ -142,7 +142,7 @@ fun main() {
 
     println()
     //predicates
-    val predicateCondition = {v:Int -> v > 10}
+    val predicateCondition = { v: Int -> v > 10 }
     //all
     println(numberList.all(predicateCondition))
     //any
@@ -150,13 +150,13 @@ fun main() {
     //count
     println(numberList.count(predicateCondition))
     //find
-    println(numberList.find (predicateCondition))
+    println(numberList.find(predicateCondition))
     //forEach
     //numberList.forEach { println(it) }
 
     println()
     //NULL Safety
-    var nStr:String? = null
+    var nStr: String? = null
     //safe call
     println(nStr?.length)
 
@@ -167,39 +167,83 @@ fun main() {
         }
     }
     //Elvis-operator
-    var l = if(nStr!=null) nStr.length else -1
-    l = nStr?.length ?:-1
+    var l = if (nStr != null) nStr.length else -1
+    l = nStr?.length ?: -1
     println(l)
     //Not Null assertion operator
     nStr = ""
     println(nStr!!.length)
     //Late-init
-    lateinit var sName:String
+    lateinit var sName: String
     sName = "10"
     println(sName)
     //lazy initialization
     println(PI)
 
+    //Scope Function
+    //with
+    println()
+    val person1 = User()
+    person1.apply {
+        name = "Mohit"
+        age = 10
+    }
+    with(person1) {
+        println("$name has age $age")
+    }
+    var str0 = with(person1){ "$name has age $age" }
+    println(str0)
+    //Apply
+    val people = User()
+    people.apply {
+        name = "Ganesh"
+        age = 10
+    }
+    //Also
+    var m = 10
+     m = m.also{
+        it+1
+    }.also { it+1 }
+    println(m)
+
+    //Let
+    var n:String? = null
+    var leghts = n?.let {
+        println(it.length)
+    }
+
+    //run
+    var admin:User? = null
+    admin?.run {
+        println(name)
+        println(age)
+    }
+
+
 }
+
 //lazy initialization
-val PI:Float by lazy { 3.14f }
+val PI: Float by lazy { 3.14f }
 
 //Backing Property
-class Children{
-    private var _age:Int = 1
+class Children {
+    private var _age: Int = 1
     var age = 24
-        get(){
+        get() {
             println(field)
             return _age
         }
-        set(value){
+        set(value) {
             _age = value
         }
 
     private val _hobbies = mutableListOf<String>()
-    public val hobbies:List<String>
+    public val hobbies: List<String>
         get() = hobbies
-    fun addHobbies(hobby_new:String){ _hobbies.add(hobby_new)}
+
+    fun addHobbies(hobby_new: String) {
+        _hobbies.add(hobby_new)
+    }
 }
 
 fun checkShape(shape: Shape) =
@@ -210,6 +254,7 @@ fun checkShape(shape: Shape) =
         Shape.NotAShape -> "Not a Shape"
         else -> "Invalid Shape"
     }
+
 //companion
 class MyClass {
     companion object {

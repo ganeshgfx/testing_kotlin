@@ -126,10 +126,21 @@ fun Person.haveCar():Boolean = getSalary()>50000
 fun String.addWithSelf2(str1:String,str2:String):String = "$this$str1 $str2"
 //infix
 infix fun String.appendWith(str:String):String = "$this $str"
-//tailrec
+//tail rec
 tailrec fun fibo(n: Int, a: BigInteger = BigInteger("0"), b: BigInteger = BigInteger("1")){
     return if (n > 0) {
         println("\n$a")
         fibo(n - 1, b, a + b)
     }else{}
 }
+
+//View model basics
+//Coroutines
+//Navigation component
+//View binding (2 way data binding) and data binding
+//Room database
+// - Room auto migration
+// - Migration with specification
+// App dev (suraj sir GitHub)
+//MVVM and MVI
+//UNIT testing
