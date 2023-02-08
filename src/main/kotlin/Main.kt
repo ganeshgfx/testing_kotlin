@@ -1,3 +1,8 @@
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 fun main() {
 
     val obj = Person(
@@ -219,8 +224,21 @@ fun main() {
         println(age)
     }
 
-
+    println()
+    //Coroutine
+    println("Main Program :${Thread.currentThread().name}")
+    GlobalScope.launch {
+        println("Fake Program :${Thread.currentThread().name}")
+        delay(1000)
+        println("Fake Program END:${Thread.currentThread().name}")
+    }
+    runBlocking {
+        delaying(2000)
+    }
+    println("Main Program END:${Thread.currentThread().name}")
 }
+
+suspend fun delaying(d:Long) = runBlocking { delay(d) }
 
 //lazy initialization
 val PI: Float by lazy { 3.14f }
